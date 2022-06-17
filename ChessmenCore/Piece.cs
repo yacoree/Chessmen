@@ -28,7 +28,7 @@ namespace Chessmen
 
         public virtual bool isRightTurn(int x1, int y1)
         {
-
+            int a = 2;
             return false;
         }
     }
