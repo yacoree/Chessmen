@@ -1,13 +1,30 @@
-﻿using System;
+﻿using ChessmenCore;
+using System;
 
-namespace Chessmen
+namespace ChessmenConsole
 {
     class Program
     {
         static void Main()
         {
-            Piece king = new Queen(1,1);
-            king.Turn(6, 6);
+            string chess;
+            while ((chess = Console.ReadLine()) != "stop"){
+                int x1 = Convert.ToInt32(Console.ReadLine());
+                int y1 = Convert.ToInt32(Console.ReadLine());
+                int x2 = Convert.ToInt32(Console.ReadLine());
+                int y2 = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    Piece f = PieceMaker.Make(chess, x1, y1);
+                    f.arranger = new ArrangerConsole();
+                    f.Turn(x2, y2);
+                    //Console.WriteLine(f.isRightTurn(x2, y2) ? "YES" : "NO");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Chessmen;
+﻿using ChessmenCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +9,7 @@ namespace ChessmenConsole
     {
         public override void PlacePiece(int x, int y)
         {
-            
+            Console.WriteLine($"Новые координаты фигуры {x}:{y}");
         }
     }
 }
