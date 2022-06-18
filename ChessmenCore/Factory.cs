@@ -1,41 +1,71 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Chessmen
+namespace ChessmenCore
 {
-    public class ChessmenData
+    public enum ChessPieces
     {
-        public string Name;
-        public Dictionary<string, int> Data;
-
-        public override string ToString()
-        {
-            return Name;
-        }
+        King,
+        Queen,
+        Bishop,
+        Knight,
+        Rook,
+        Pawn
     }
 
-    static public class ChessmenFactory
+    public static class PieceMaker
     {
-        public static Piece Make(ChessmenData chessmenData)
+        private static readonly Dictionary<string, ChessPieces> ChessPiecesCode;
+
+        static PieceMaker()
         {
-            Piece chessmen = null;
-            //int color = chessmenData.Data["Color"];
-            switch (chessmenData.Name)
+            ChessPiecesCode = new Dictionary<string, ChessPieces>()
             {
-                case "King":
-                    chessmen = new King(chessmenData.Data["X"], chessmenData.Data["Y"]);
+                { "King",  ChessPieces.King},
+                { "K",  ChessPieces.King},
+                { "Queen",  ChessPieces.Queen},
+                { "Q",  ChessPieces.Queen},
+                { "Bishop",  ChessPieces.Bishop},
+                { "B",  ChessPieces.Bishop},
+                { "Knight",  ChessPieces.Knight},
+                { "N",  ChessPieces.Knight},
+                { "Rook",  ChessPieces.Rook},
+                { "R",  ChessPieces.Rook},
+            };
+        }
+
+        static public Piece Make(ChessPieces pieceCode, int x, int y)
+        {
+            Piece piece = null;
+
+            switch (pieceCode)
+            {
+                case ChessPieces.King:
+                    piece = new King(x, y);
                     break;
-                case "Knight":
-                    chessmen = new Knight(chessmenData.Data["X"], chessmenData.Data["Y"]);
+                case ChessPieces.Queen:
+                    piece = new Queen(x, y);
                     break;
-                case "Queen":
-                    chessmen = new Queen(chessmenData.Data["X"], chessmenData.Data["Y"]);
+                case ChessPieces.Bishop:
+                    piece = new Bishop(x, y);
                     break;
-                case "Rook":
-                    chessmen = new Rook(chessmenData.Data["X"], chessmenData.   Data["Y"]);
+                case ChessPieces.Knight:
+                    piece = new Knight(x, y);
                     break;
+                case ChessPieces.Rook:
+                    piece = new Rook(x, y);
+                    break;
+
+                default:
+                    throw new Exception("Unknown piece code");
             }
-            return chessmen;
+
+            return piece;
+        }
+
+        static public Piece Make(string pieceCode, int x, int y)
+        {
+            return Make(ChessPiecesCode[pieceCode], x, y);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Chessmen
+namespace ChessmenCore
 {
     public class Bishop : Piece
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Chessmen
+namespace ChessmenCore
 {
     public abstract class Piece
     {
@@ -22,7 +22,9 @@ namespace Chessmen
                 this.x = x1;
                 this.y = y1;
                 arranger.PlacePiece(x, y);
+                return;
             }
+            throw (new Exception("Unknown piece code."));
         }
 
         public abstract bool isRightTurn(int x1, int y1);

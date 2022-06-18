@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Chessmen
+namespace ChessmenCore
 {
     abstract public class Arranger
     {
