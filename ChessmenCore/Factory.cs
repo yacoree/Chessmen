@@ -32,7 +32,7 @@ namespace Chessmen
                     chessmen = new Queen(chessmenData.Data["X"], chessmenData.Data["Y"]);
                     break;
                 case "Rook":
-                    chessmen = new Rook(chessmenData.Data["X"], chessmenData.Data["Y"]);
+                    chessmen = new Rook(chessmenData.Data["X"], chessmenData.   Data["Y"]);
                     break;
             }
             return chessmen;

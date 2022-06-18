@@ -6,6 +6,9 @@ namespace Chessmen
     {
         protected int x;
         protected int y;
+
+        public Arranger arranger;
+
         public Piece(int x, int y)
         {
             this.x = x;
@@ -18,18 +21,14 @@ namespace Chessmen
             {
                 this.x = x1;
                 this.y = y1;
-                Console.WriteLine($"Новые координаты фигуры {x}:{y}");
-            }
-            else
-            {
-                Console.WriteLine("Ошибка, фигура не может так перемещаться");
+                arranger.PlacePiece(x, y);
             }
         }
 
-        public virtual bool isRightTurn(int x1, int y1)
+        public abstract bool isRightTurn(int x1, int y1);
+        /*public virtual bool isRightTurn(int x1, int y1)
         {
-            int a = 2;
             return false;
-        }
+        }*/
     }
 }
