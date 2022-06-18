@@ -24,7 +24,7 @@ namespace ChessmenCore
                 arranger.PlacePiece(x, y);
                 return;
             }
-            throw (new Exception("Unknown piece code."));
+            throw (new Exception("The piece cannot make such a move."));
         }
 
         public abstract bool isRightTurn(int x1, int y1);

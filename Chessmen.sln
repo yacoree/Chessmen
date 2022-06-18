@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChessmenConsole", "Chessmen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChessmenCore", "ChessmenCore\ChessmenCore.csproj", "{88425A03-6BA5-4899-90FC-6773C5EEA7E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessmenWPF", "ChessmenWPF\ChessmenWPF.csproj", "{A6799461-55A7-4963-A25B-A82A2CA2D3CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{88425A03-6BA5-4899-90FC-6773C5EEA7E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88425A03-6BA5-4899-90FC-6773C5EEA7E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88425A03-6BA5-4899-90FC-6773C5EEA7E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6799461-55A7-4963-A25B-A82A2CA2D3CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6799461-55A7-4963-A25B-A82A2CA2D3CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6799461-55A7-4963-A25B-A82A2CA2D3CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6799461-55A7-4963-A25B-A82A2CA2D3CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
