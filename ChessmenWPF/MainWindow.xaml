@@ -5,17 +5,156 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChessmenWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="800">
+        Title="MainWindow" Height="500" Width="610">
+
+    <Window.Resources>
+        <Style x:Key="CheckerboardCell" >
+            <EventSetter Event="Button.Click" Handler="CheckerboardCell_Click"/>
+        </Style>
+        <Style x:Key="CheckerboardCellBlack" BasedOn="{StaticResource CheckerboardCell}">
+            <Setter Property="Control.Background" Value="Black" />
+            <Setter Property="Control.Foreground" Value="White" />
+        </Style>
+        <Style x:Key="CheckerboardCellWhite" BasedOn="{StaticResource CheckerboardCell}">
+            <Setter Property="Control.Background" Value="White" />
+            <Setter Property="Control.Foreground" Value="Black" />
+        </Style>
+        <Style x:Key="SelectedPiece">
+            <Setter Property="Control.Background" Value="White" />
+            <Setter Property="Control.Foreground" Value="Black" />
+            <EventSetter Event="Button.Click" Handler="SelectedPiece_Click"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
+
+        <!-- Make Checkerboard -->
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Grid.Row="0" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="1" Grid.Row="0" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="2" Grid.Row="0" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="3" Grid.Row="0" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="4" Grid.Row="0" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="5" Grid.Row="0" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="6" Grid.Row="0" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="7" Grid.Row="0" Style="{StaticResource CheckerboardCellBlack}"/>
+
+            <Button Grid.Column="0" Grid.Row="1" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="1" Grid.Row="1" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="2" Grid.Row="1" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="3" Grid.Row="1" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="4" Grid.Row="1" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="5" Grid.Row="1" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="6" Grid.Row="1" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="7" Grid.Row="1" Style="{StaticResource CheckerboardCellWhite}"/>
+
+            <Button Grid.Column="0" Grid.Row="2" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="1" Grid.Row="2" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="2" Grid.Row="2" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="3" Grid.Row="2" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="4" Grid.Row="2" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="5" Grid.Row="2" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="6" Grid.Row="2" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="7" Grid.Row="2" Style="{StaticResource CheckerboardCellBlack}"/>
+
+            <Button Grid.Column="0" Grid.Row="3" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="1" Grid.Row="3" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="2" Grid.Row="3" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="3" Grid.Row="3" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="4" Grid.Row="3" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="5" Grid.Row="3" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="6" Grid.Row="3" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="7" Grid.Row="3" Style="{StaticResource CheckerboardCellWhite}"/>
+
+            <Button Grid.Column="0" Grid.Row="4" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="1" Grid.Row="4" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="2" Grid.Row="4" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="3" Grid.Row="4" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="4" Grid.Row="4" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="5" Grid.Row="4" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="6" Grid.Row="4" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="7" Grid.Row="4" Style="{StaticResource CheckerboardCellBlack}"/>
+
+            <Button Grid.Column="0" Grid.Row="5" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="1" Grid.Row="5" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="2" Grid.Row="5" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="3" Grid.Row="5" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="4" Grid.Row="5" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="5" Grid.Row="5" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="6" Grid.Row="5" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="7" Grid.Row="5" Style="{StaticResource CheckerboardCellWhite}"/>
+
+            <Button Grid.Column="0" Grid.Row="6" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="1" Grid.Row="6" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="2" Grid.Row="6" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="3" Grid.Row="6" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="4" Grid.Row="6" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="5" Grid.Row="6" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="6" Grid.Row="6" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="7" Grid.Row="6" Style="{StaticResource CheckerboardCellBlack}"/>
+
+            <Button Grid.Column="0" Grid.Row="7" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="1" Grid.Row="7" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="2" Grid.Row="7" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="3" Grid.Row="7" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="4" Grid.Row="7" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="5" Grid.Row="7" Style="{StaticResource CheckerboardCellWhite}"/>
+            <Button Grid.Column="6" Grid.Row="7" Style="{StaticResource CheckerboardCellBlack}"/>
+            <Button Grid.Column="7" Grid.Row="7" Style="{StaticResource CheckerboardCellWhite}"/>
+        </Grid>
+        
+        <Grid Grid.Column="3" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Select Piece" Grid.Row="0" HorizontalAlignment="Center"/>
+            <Button Content="King" Grid.Row="2" Style="{StaticResource SelectedPiece}"/>
+            <Button Content="Queen" Grid.Row="3" Style="{StaticResource SelectedPiece}"/>
+            <Button Content="Knight" Grid.Row="4" Style="{StaticResource SelectedPiece}"/>
+            <Button Content="Rook" Grid.Row="5" Style="{StaticResource SelectedPiece}"/>
+            <Button Content="Bishop" Grid.Row="6" Style="{StaticResource SelectedPiece}"/>
+
+        </Grid>
+
     </Grid>
 </Window>

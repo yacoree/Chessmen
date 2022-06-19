@@ -4,6 +4,8 @@ namespace ChessmenCore
 {
     public abstract class Piece
     {
+        public static Piece[,] checkerboard = new Piece[8, 8];
+
         protected int x;
         protected int y;
 
@@ -13,18 +15,26 @@ namespace ChessmenCore
         {
             this.x = x;
             this.y = y;
+            checkerboard[x, y] = this;
         }
 
         public void Turn(int x1, int y1)
         {
             if (isRightTurn(x1, y1))
             {
+                checkerboard[x, y] = null;
                 this.x = x1;
                 this.y = y1;
+                checkerboard[x, y] = this;
                 arranger.PlacePiece(x, y);
                 return;
             }
-            throw (new Exception("The piece cannot make such a move."));
+            throw new Exception("The piece cannot make such a move.");
+        }
+
+        public (int x, int y) Parse()
+        {
+            return (x, y);
         }
 
         public abstract bool isRightTurn(int x1, int y1);
