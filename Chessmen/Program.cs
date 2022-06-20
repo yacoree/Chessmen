@@ -8,7 +8,8 @@ namespace ChessmenConsole
         static void Main()
         {
             string chess;
-            while ((chess = Console.ReadLine()) != "stop"){
+            while ((chess = Console.ReadLine()) != "stop")
+            {
                 int x1 = Convert.ToInt32(Console.ReadLine());
                 int y1 = Convert.ToInt32(Console.ReadLine());
                 int x2 = Convert.ToInt32(Console.ReadLine());
@@ -18,7 +19,6 @@ namespace ChessmenConsole
                     Piece f = PieceMaker.Make(chess, x1, y1);
                     f.arranger = new ArrangerConsole();
                     f.Turn(x2, y2);
-                    //Console.WriteLine(f.isRightTurn(x2, y2) ? "YES" : "NO");
                 }
                 catch (Exception ex)
                 {

@@ -10,7 +10,8 @@ namespace ChessmenCore
 
         public override bool isRightTurn(int x1, int y1)
         {
-            return (x == x1 || y == y1);
+            if (base.isRightTurn(x1, y1)) return (x == x1 || y == y1);
+            return false;
         }
 
     }

@@ -10,7 +10,8 @@ namespace ChessmenCore
 
         public override bool isRightTurn(int x1, int y1)
         {
-            return (Math.Abs(x - x1) <= 1 && Math.Abs(y - y1) <= 1);
+            if (base.isRightTurn(x1, y1)) return (Math.Abs(x - x1) <= 1 && Math.Abs(y - y1) <= 1);
+            return false;
         }
     }
 }

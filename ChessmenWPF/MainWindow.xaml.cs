@@ -23,6 +23,7 @@ namespace ChessmenWPF
     public partial class MainWindow : Window
     {
         Piece currentPiece;
+        Button selectedButton;
         string selectedPiece;
 
         public MainWindow()
@@ -38,36 +39,36 @@ namespace ChessmenWPF
             int y = Grid.GetRow(btn);
             if (currentPiece != null)
             {
-                if (currentPiece.isRightTurn(x, y))
+                try
                 {
-                    (int x0, int y0) = currentPiece.Parse();
-                    //Grid.SetColumn(btn, y0);
-                    //Grid.SetRow(btn, x0);
-                    //var i = GridView.GetColumnCollection(btn);
-                    //MessageBox.Show("" + i);
-                    return;
+                    currentPiece.arranger = new ArrangerWPF(btn, selectedPiece);
+                    currentPiece.Turn(x, y);
+                    selectedButton.Content = "";
                 }
-                //return;
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                selectedButton = null;
+                currentPiece = null;
+                return;
             }
             if (content != "")
             {
                 currentPiece = Piece.checkerboard[x, y];
+                selectedButton = btn;
             }
             if (content == "" && selectedPiece != "")
             {
                 Piece currentPiece = PieceMaker.Make(selectedPiece, x, y);
-                currentPiece.arranger = new ArrangerWPF();
                 btn.Content += selectedPiece;
-                MessageBox.Show(selectedPiece);
             }
-            //currentPiece = PieceMaker.Make(selectedPiece, 1, 1);
         }
 
         private void SelectedPiece_Click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
             selectedPiece = "" + btn.Content;
-            MessageBox.Show(selectedPiece);
         }
     }
 }

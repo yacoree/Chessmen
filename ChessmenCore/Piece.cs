@@ -4,7 +4,9 @@ namespace ChessmenCore
 {
     public abstract class Piece
     {
-        public static Piece[,] checkerboard = new Piece[8, 8];
+        public static int checkerboardWidth = 8;
+        public static int checkerboardHeight = 8;
+        public static Piece[,] checkerboard = new Piece[checkerboardWidth, checkerboardHeight];
 
         protected int x;
         protected int y;
@@ -37,10 +39,15 @@ namespace ChessmenCore
             return (x, y);
         }
 
-        public abstract bool isRightTurn(int x1, int y1);
-        /*public virtual bool isRightTurn(int x1, int y1)
+        //public abstract bool isRightTurn(int x1, int y1);
+        public virtual bool isRightTurn(int x1, int y1)
         {
-            return false;
-        }*/
+            bool res = false;
+            if ((x1 < checkerboardWidth && x1 > 0) && (y1 < checkerboardHeight && y1 > 0)) 
+            {
+                if (checkerboard[x1, y1] == null) res = true;
+            }
+            return res;
+        }
     }
 }
