@@ -4,7 +4,7 @@ namespace ChessmenCore
 {
     public class Bishop : Piece
     {
-        public Bishop(int x1, int y1) : base(x1, y1)
+        public Bishop(int x, int y, int color) : base(x, y, color)
         {
         }
 

@@ -34,26 +34,26 @@ namespace ChessmenCore
             };
         }
 
-        static public Piece Make(ChessPieces pieceCode, int x, int y)
+        static public Piece Make(ChessPieces pieceCode, int x, int y, int color)
         {
             Piece piece = null;
 
             switch (pieceCode)
             {
                 case ChessPieces.King:
-                    piece = new King(x, y);
+                    piece = new King(x, y, color);
                     break;
                 case ChessPieces.Queen:
-                    piece = new Queen(x, y);
+                    piece = new Queen(x, y, color);
                     break;
                 case ChessPieces.Bishop:
-                    piece = new Bishop(x, y);
+                    piece = new Bishop(x, y, color);
                     break;
                 case ChessPieces.Knight:
-                    piece = new Knight(x, y);
+                    piece = new Knight(x, y, color);
                     break;
                 case ChessPieces.Rook:
-                    piece = new Rook(x, y);
+                    piece = new Rook(x, y, color);
                     break;
 
                 default:
@@ -63,9 +63,9 @@ namespace ChessmenCore
             return piece;
         }
 
-        static public Piece Make(string pieceCode, int x, int y)
+        static public Piece Make(string pieceCode, int x, int y, int color)
         {
-            return Make(ChessPiecesCode[pieceCode], x, y);
+            return Make(ChessPiecesCode[pieceCode], x, y, color);
         }
     }
 }

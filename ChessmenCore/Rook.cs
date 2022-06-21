@@ -4,7 +4,7 @@ namespace ChessmenCore
 {
     public class Rook : Piece
     {
-        public Rook(int x1, int y1) : base(x1, y1)
+        public Rook(int x, int y, int color) : base(x, y, color)
         {
         }
 
