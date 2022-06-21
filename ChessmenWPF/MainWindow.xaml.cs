@@ -68,19 +68,27 @@ namespace ChessmenWPF
                 Piece currentPiece = PieceMaker.Make(selectedPiece, x, y, selectedColor);
                 btn.Content += selectedPiece;
                 (int x3, int y3) = currentPiece.Parse();
-                //MessageBox.Show($"{x3}, {y3}");
-                //MessageBox.Show($"{Piece.checkerboard[x3, y3]}");
-                //MessageBox.Show($"{Piece.checkerboard[0, 0] == null}");
             }
-            //var i = Checkerboard.Children.GetEnumerator();
-            //MessageBox.Show();
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedButton != null)
+            {
+                string content = "" + selectedButton.Content;
+                if (content != "")
+                {
+                    currentPiece.Delete();
+                    selectedButton.Content = "";
+                    selectedButton = null;
+                    currentPiece = null;
+                }
+            }
         }
 
         private void SelectedPiece_Click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
-            //btn.Background(ImageBrush("Resourses/Chess_bdt45.svg"));
-            //btn.Background(ImageSource("Resourses/Chess_bdt45.svg"));
             var color = btn.Background;
             if (color == Brushes.White) selectedColor = 0;
             else if (color == Brushes.Black) selectedColor = 1;

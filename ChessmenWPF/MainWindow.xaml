@@ -150,6 +150,7 @@
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="25"/>
+                <RowDefinition/>
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -170,6 +171,8 @@
             <Button Content="Knight" Grid.Row="4" Grid.Column="2" Style="{StaticResource SelectedPieceBlack}"/>
             <Button Content="Rook" Grid.Row="5" Grid.Column="2" Style="{StaticResource SelectedPieceBlack}"/>
             <Button Content="Bishop" Grid.Row="6" Grid.Column="2" Style="{StaticResource SelectedPieceBlack}"/>
+
+            <Button Content="Delete" Grid.Row="8" Grid.ColumnSpan="3" Click="Delete_Click" />
         </Grid>
 
     </Grid>

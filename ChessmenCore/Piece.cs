@@ -57,15 +57,25 @@ namespace ChessmenCore
         public virtual bool isRightTurn(int x1, int y1)
         {
             return (x1 < checkerboardWidth && x1 >= 0 && y1 < checkerboardHeight && y1 >= 0);
-            //bool res = false;
-            //if (x1 < checkerboardWidth && x1 >= 0 && y1 < checkerboardHeight && y1 >= 0) 
-            //{
-            //    if (checkerboard[x1, y1] == null)
-            //    {
-            //        res = true;
-            //    }
-            //}
-            //return res;
+        }
+
+        protected bool CanMakeTurn(int x1, int y1)
+        {
+            int count;
+            if (y == y1) count = Math.Abs(x - x1);
+            else count = Math.Abs(y - y1);
+            int razX = (x - x1) / count;
+            int razY = (y - y1) / count;
+            int Xcount = x;
+            int Ycount = y;
+            while ((count - 1) != 0)
+            {
+                Xcount -= razX;
+                Ycount -= razY;
+                if (checkerboard[Xcount, Ycount] != null) return false;
+                count--;
+            }
+            return true;
         }
     }
 }
