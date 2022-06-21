@@ -25,6 +25,7 @@ namespace ChessmenWPF
         Piece currentPiece;
         Button selectedButton;
         string selectedPiece = "";
+        int selectedColor;
 
         public MainWindow()
         {
@@ -64,7 +65,7 @@ namespace ChessmenWPF
             }
             if (content == "" && selectedPiece != "")
             {
-                Piece currentPiece = PieceMaker.Make(selectedPiece, x, y);
+                Piece currentPiece = PieceMaker.Make(selectedPiece, x, y, selectedColor);
                 btn.Content += selectedPiece;
                 (int x3, int y3) = currentPiece.Parse();
                 //MessageBox.Show($"{x3}, {y3}");
@@ -78,6 +79,11 @@ namespace ChessmenWPF
         private void SelectedPiece_Click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
+            //btn.Background(ImageBrush("Resourses/Chess_bdt45.svg"));
+            //btn.Background(ImageSource("Resourses/Chess_bdt45.svg"));
+            var color = btn.Background;
+            if (color == Brushes.White) selectedColor = 0;
+            else if (color == Brushes.Black) selectedColor = 1;
             selectedPiece = "" + btn.Content;
         }
     }

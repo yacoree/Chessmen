@@ -20,9 +20,15 @@
             <Setter Property="Control.Foreground" Value="Black" />
         </Style>
         <Style x:Key="SelectedPiece">
+            <EventSetter Event="Button.Click" Handler="SelectedPiece_Click"/>
+        </Style>
+        <Style x:Key="SelectedPieceBlack" BasedOn="{StaticResource SelectedPiece}">
+            <Setter Property="Control.Background" Value="Black" />
+            <Setter Property="Control.Foreground" Value="White" />
+        </Style>
+        <Style x:Key="SelectedPieceWhite" BasedOn="{StaticResource SelectedPiece}">
             <Setter Property="Control.Background" Value="White" />
             <Setter Property="Control.Foreground" Value="Black" />
-            <EventSetter Event="Button.Click" Handler="SelectedPiece_Click"/>
         </Style>
     </Window.Resources>
     <Grid>
@@ -146,14 +152,24 @@
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
             <TextBlock Text="Select Piece" Grid.Row="0" HorizontalAlignment="Center"/>
-            <Button Content="King" Grid.Row="2" Style="{StaticResource SelectedPiece}"/>
-            <Button Content="Queen" Grid.Row="3" Style="{StaticResource SelectedPiece}"/>
-            <Button Content="Knight" Grid.Row="4" Style="{StaticResource SelectedPiece}"/>
-            <Button Content="Rook" Grid.Row="5" Style="{StaticResource SelectedPiece}"/>
-            <Button Content="Bishop" Grid.Row="6" Style="{StaticResource SelectedPiece}"/>
+            <Button Content="King" Grid.Row="2" Grid.Column="0" Style="{StaticResource SelectedPieceWhite}"/>
+            <Button Content="Queen" Grid.Row="3" Grid.Column="0" Style="{StaticResource SelectedPieceWhite}"/>
+            <Button Content="Knight" Grid.Row="4" Grid.Column="0" Style="{StaticResource SelectedPieceWhite}"/>
+            <Button Content="Rook" Grid.Row="5" Grid.Column="0" Style="{StaticResource SelectedPieceWhite}"/>
+            <Button Content="Bishop" Grid.Row="6" Grid.Column="0" Style="{StaticResource SelectedPieceWhite}"/>
 
+            <Button Content="King" Grid.Row="2" Grid.Column="2" Style="{StaticResource SelectedPieceBlack}"/>
+            <Button Content="Queen" Grid.Row="3" Grid.Column="2" Style="{StaticResource SelectedPieceBlack}"/>
+            <Button Content="Knight" Grid.Row="4" Grid.Column="2" Style="{StaticResource SelectedPieceBlack}"/>
+            <Button Content="Rook" Grid.Row="5" Grid.Column="2" Style="{StaticResource SelectedPieceBlack}"/>
+            <Button Content="Bishop" Grid.Row="6" Grid.Column="2" Style="{StaticResource SelectedPieceBlack}"/>
         </Grid>
 
     </Grid>
