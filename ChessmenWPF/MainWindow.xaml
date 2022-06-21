@@ -40,7 +40,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- Make Checkerboard -->
-        <Grid Grid.Column="1" Grid.Row="1">
+        <Grid x:Name="Checkerboard" Grid.Column="1" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>

@@ -43,9 +43,12 @@ namespace ChessmenCore
         public virtual bool isRightTurn(int x1, int y1)
         {
             bool res = false;
-            if ((x1 < checkerboardWidth && x1 > 0) && (y1 < checkerboardHeight && y1 > 0)) 
+            if (x1 < checkerboardWidth && x1 >= 0 && y1 < checkerboardHeight && y1 >= 0) 
             {
-                if (checkerboard[x1, y1] == null) res = true;
+                if (checkerboard[x1, y1] == null)
+                {
+                    res = true;
+                }
             }
             return res;
         }

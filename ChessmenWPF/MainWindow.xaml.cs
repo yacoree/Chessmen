@@ -24,7 +24,7 @@ namespace ChessmenWPF
     {
         Piece currentPiece;
         Button selectedButton;
-        string selectedPiece;
+        string selectedPiece = "";
 
         public MainWindow()
         {
@@ -44,6 +44,8 @@ namespace ChessmenWPF
                     currentPiece.arranger = new ArrangerWPF(btn, selectedPiece);
                     currentPiece.Turn(x, y);
                     selectedButton.Content = "";
+                    //можно убрать, но пусть пока так
+                    selectedPiece = "";
                 }
                 catch (Exception ex)
                 {
@@ -57,12 +59,20 @@ namespace ChessmenWPF
             {
                 currentPiece = Piece.checkerboard[x, y];
                 selectedButton = btn;
+                selectedPiece = "" + btn.Content;
+                
             }
             if (content == "" && selectedPiece != "")
             {
                 Piece currentPiece = PieceMaker.Make(selectedPiece, x, y);
                 btn.Content += selectedPiece;
+                (int x3, int y3) = currentPiece.Parse();
+                //MessageBox.Show($"{x3}, {y3}");
+                //MessageBox.Show($"{Piece.checkerboard[x3, y3]}");
+                //MessageBox.Show($"{Piece.checkerboard[0, 0] == null}");
             }
+            //var i = Checkerboard.Children.GetEnumerator();
+            //MessageBox.Show();
         }
 
         private void SelectedPiece_Click(object sender, RoutedEventArgs e)
